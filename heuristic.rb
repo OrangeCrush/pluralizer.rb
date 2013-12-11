@@ -78,11 +78,12 @@ class Last_N_Letters_Heuristic < Heuristic
       end
       possible_matches = []
       matches.each do |x|
-         #x[0] is the string to replace, x[1] is the string what to replace it with
+         #@rules[x][0] is the string to replace, [x][1] is the string what to replace it with
          if @rules[x][0].empty?
             possible_matches <<  singular_word + @rules[x][1]
          else
-            possible_matches << singular_word.replacelast!(x, @rules[x][1])
+            # might not replace last occurence..
+            possible_matches << singular_word.replacelast!(@rules[x][0], @rules[x][1])
          end
       end
       return possible_matches.empty? ? "No matches found for #{singular_word}" : "#{singular_word}: #{fitness(possible_matches)}"
@@ -101,7 +102,7 @@ class Last_N_Letters_Heuristic < Heuristic
 end
 
 class String
-   def replacelast!(p)
-      self.slice!(s.rindex(p), p.size)
+   def replacelast!(old, new)
+      self.reverse.sub!(old.reverse, new.reverse).reverse
    end
 end
