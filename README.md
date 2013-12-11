@@ -5,10 +5,10 @@ Artificial intelligence to turn singular nouns into their respective plural form
 
 To run from commandline
 ```sh
-[maxwell@Orngcrsh:~/github/Pluralizer on master]
+[user@host:~/github/Pluralizer on master]
 % ruby train.rb
 ```
-```ruby
+```
 beer
 Guess for Last_4_Letters_Heuristic:
 ===================================================
@@ -26,10 +26,10 @@ beer: beer
 
 Or file
 ```sh
-[maxwell@Orngcrsh:~/github/Pluralizer on master]
-% ruby train.rb
+[user@host:~/github/Pluralizer on master]
+% ruby train.rb filename
 ```
-```ruby
+```
 Guess for Last_4_Letters_Heuristic:
 ===================================================
 No matches found for class
@@ -50,6 +50,7 @@ tomato: tomatoes
 ===================================================
 ```
 
+Could also pipe to or direct to (just uses ARGF)
 
 ##Training Data##
 Looking for ANY sort of dataset on singular / plural words.  I can't seem
